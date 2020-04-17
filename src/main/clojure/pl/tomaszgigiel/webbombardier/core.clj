@@ -9,7 +9,9 @@
 
 (defn selenium []
   (let [driver (ChromeDriver.)]
-    (.get driver "http://moj.gov.pl/"))
+    (log/info "www")
+    (.get driver "http://gazeta.pl/")
+    )
   )
 
 (defn -main
@@ -17,5 +19,5 @@
   [& args]
   (do
     (System/setProperty "webdriver.chrome.driver" (str curdir "\\drivers\\72.0.3626.69\\chromedriver_win32\\chromedriver.exe"))
-    (selenium)
+    (doall (take 3 (repeatedly selenium)))
     (log/info "ok")))
